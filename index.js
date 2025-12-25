@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -20,7 +21,9 @@ app.get('/services', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch services' });
     }
 });
-
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 app.get('/', (req, res) => {
     res.send('Server is up! Go to /services to see the list.');
 });
