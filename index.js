@@ -14,18 +14,15 @@ app.get('/services', async (req, res) => {
                 'Accept': 'application/json'
             }
         });
-        
         res.json(response.data);
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ error: 'Failed to fetch services' });
     }
 });
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
-});
-app.get('/', (req, res) => {
-    res.send('Server is up! Go to /services to see the list.');
 });
 
 app.listen(port, () => {
